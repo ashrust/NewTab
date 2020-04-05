@@ -43,8 +43,9 @@ html {
 <div class="bottomright"> IMGTXT </div>
 <div class="bottomleft">
   <div style="float:left; padding-right: 10px;">
-  <form id="ddgSearch" method="get" action="https://www.duckduckgo.com/search" style="padding:0; margin:0;">
+  <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">
     <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" style="font-size:16px;" placeholder="DuckDuckGo Search">
+    <input type="hidden" name="ia" value="web">
   </form>
   </div>
   <div style="float:left;">

@@ -22,6 +22,7 @@ def newtab():
   return render_img.render_html(img_urls_path)
 
 def main():
+  print ("main is running")
   pull_images.pullTopImages()
   keep_alive()
   app.run(host='0.0.0.0', port='3000')

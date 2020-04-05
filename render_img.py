@@ -27,6 +27,10 @@ html {
   padding-left: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  white-space: nowrap; 
+  max-width: 500px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 .topleft {
   position: absolute;

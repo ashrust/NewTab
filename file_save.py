@@ -7,6 +7,6 @@ def save_urls(urls, filepath):
   #open, write, close file
   file = open(filepath,"w")
   #print(file)
-  file.write(final_string) 
+  file.write(final_string.strip()) 
   file.close()
 

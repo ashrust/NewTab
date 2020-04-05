@@ -21,7 +21,7 @@ html {
   font-family: arial,sans-serif;
   color: #FFF;
   font-size: 16px; 
-  opacity: 0.5;
+  opacity: 0.3;
   background-color: #777;
   padding-right: 10px;
   padding-left: 10px;
@@ -33,12 +33,11 @@ html {
   top: 8px;
   left: 8px;
   font: 16px arial,sans-serif ;
-  color: #222;
 }
 
 input[type=text]{
   font-size:16px;
-  color: #555;
+  color: #000;
   opacity: 0.3;
 }
 
@@ -53,7 +52,7 @@ input[type=text]:focus {
 <div class='bgimg-1'>
 <div class="bottomright"> IMGTXT </div>
 <div class="topleft">
-  <div style="float:left; padding-right: 10px;">
+  <div style="float:left; padding-right: 15px;">
   <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">
     <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" placeholder="DuckDuckGo Search...">
     <input type="hidden" name="ia" value="web">

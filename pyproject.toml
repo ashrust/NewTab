@@ -12,4 +12,5 @@ version = "0.1.0"
 flask = "^1.1"
 python = "^3.7"
 schedule = "^0.6.0"
+flask-sslify = "^0.1.5"
 [tool.poetry.dev-dependencies]

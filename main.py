@@ -1,9 +1,11 @@
 import requests, json, schedule, time, os
 import file_save, render_img, pull_images
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request, redirect
+#from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
+#sslify = SSLify(app)
 #app = Flask('')
 
 img_urls_path = "static/image_urls.txt"

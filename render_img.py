@@ -88,6 +88,7 @@ for (var i = 0; i < inputBoxes.length; i++) {
 </div>
 </body>
 """
+# js css trials http://jsfiddle.net/wuqg49xt/
 
 def render_html(filepath):
   #open urls File

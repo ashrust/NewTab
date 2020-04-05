@@ -28,9 +28,9 @@ html {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.bottomleft {
+.topleft {
   position: absolute;
-  bottom: 8px;
+  top: 8px;
   left: 8px;
   font: 16px arial,sans-serif ;
   color: #222;
@@ -52,7 +52,7 @@ input[type=text]:focus {
 <body onbeforeunload="">
 <div class='bgimg-1'>
 <div class="bottomright"> IMGTXT </div>
-<div class="bottomleft">
+<div class="topleft">
   <div style="float:left; padding-right: 10px;">
   <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">
     <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" placeholder="DuckDuckGo Search...">

@@ -8,6 +8,10 @@ app = Flask(__name__, static_folder='static')
 
 img_urls_path = "static/image_urls.txt"
 
+@app.route('/favicon.ico')
+def favicon():
+  return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
+
 @app.route('/')
 def newtab():
   return render_img.render_html(img_urls_path)
@@ -17,10 +21,6 @@ def root():
   pull_images.pullTopImages()
   return "Image collection is running"
   #return app.send_static_file('./image_urls.txt')
-
-@app.route('/favicon.ico')
-def favicon():
-  return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
 
 def main():
   print ("main is running")

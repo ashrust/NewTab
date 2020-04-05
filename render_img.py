@@ -32,25 +32,36 @@ html {
   position: absolute;
   bottom: 8px;
   left: 8px;
-  opacity: 0.4;
   font: 16px arial,sans-serif ;
-  color: #333;
+  color: #222;
 }
+
+input[type=text]{
+  font-size:16px;
+  color: #555;
+  opacity: 0.3;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+  opacity: 0.6;
+}
+
 </style>
 </head>
-<body>
+<body onbeforeunload="">
 <div class='bgimg-1'>
 <div class="bottomright"> IMGTXT </div>
 <div class="bottomleft">
   <div style="float:left; padding-right: 10px;">
   <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">
-    <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" style="font-size:16px;" placeholder="DuckDuckGo Search">
+    <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" placeholder="DuckDuckGo Search...">
     <input type="hidden" name="ia" value="web">
   </form>
   </div>
   <div style="float:left;">
   <form id="googleSearch" method="get" action="https://www.google.com/search" style="padding:0; margin:0;">
-    <input id="googleSearchBar" type="text" name="q" size="25" value="" style="font-size:16px;" placeholder="Google Search">
+    <input id="googleSearchBar" type="text" name="q" size="25" value=""  placeholder="Google Search...">
   </form>
   </div>
 </div>

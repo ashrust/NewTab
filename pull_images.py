@@ -9,7 +9,7 @@ def pullTopImages():
   #pull top images from reddit
 
   #collect json
-  url = 'https://imgur.com/r/earthporn/top/week.json'
+  url = 'https://imgur.com/r/earthporn/top/day.json'
   resp = requests.get(url=url)
   data = resp.json()
 

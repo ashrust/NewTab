@@ -9,17 +9,18 @@ app = Flask(__name__, static_folder='static')
 img_urls_path = "static/image_urls.txt"
 
 @app.route('/')
+def newtab():
+  return render_img.render_html(img_urls_path)
+
+@app.route('/runimages')
 def root():
+  pull_images.pullTopImages()
   return "Image collection is running"
   #return app.send_static_file('./image_urls.txt')
 
 @app.route('/favicon.ico')
 def favicon():
   return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
-
-@app.route('/newtab')
-def newtab():
-  return render_img.render_html(img_urls_path)
 
 def main():
   print ("main is running")
@@ -34,7 +35,7 @@ def keep_alive():
 if __name__ == "__main__":
   main()
 
-schedule.every().day.at("01:00").do(pull_images.pullTopImages)
+schedule.every().day.at("12:00").do(pull_images.pullTopImages)
 while True:
     schedule.run_pending()
     time.sleep(1)

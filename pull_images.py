@@ -23,7 +23,7 @@ def pullTopImages():
     if width <= img['width'] and height <= img['height']:
       #save the image url
       #print (img['hash'], img['title'])
-      imgur_url = 'http://i.imgur.com/'+img['hash']+'.jpg'
+      imgur_url = 'https://i.imgur.com/'+img['hash']+'.jpg'
       imgur_url = imgur_url + '\t'+ img['reddit'] + '\t' + trimTitle(img['title'])
       final_img_urls.append(imgur_url)
       

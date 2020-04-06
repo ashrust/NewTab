@@ -23,6 +23,7 @@ html {
   font-size: 16px; 
   opacity: 0.3;
   background-color: #777;
+  border-radius: 5px;
   white-space: nowrap; 
   max-width: 500px; 
   overflow: hidden;
@@ -32,7 +33,6 @@ html {
 }
 
 .bottomright a{
-  #display:block;
   padding-right: 15px;
   padding-left: 15px;
   padding-bottom: 10px;
@@ -50,7 +50,8 @@ a:link, a:visited, a:hover, a:active {
 }
 
 div.bottomright:hover{
-  opacity: 1;
+  opacity: 0.9;
+  background-color: #555;
 }
 
 .topleft {
@@ -78,7 +79,7 @@ input[type=text]:focus {
 </head>
 <body onbeforeunload="">
 <div class='bgimg-1'>
-<div class="bottomright"><a href="https://www.reddit.com/IMGREDDITLINK" target="_blank"> IMGTXT </a></div>
+<div class="bottomright"><a href="https://www.reddit.comIMGREDDITLINK" target="_blank"> IMGTXT </a></div>
 <div class="topleft">
   <div id="ddgDiv">
   <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">

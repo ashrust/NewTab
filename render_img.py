@@ -23,15 +23,36 @@ html {
   font-size: 16px; 
   opacity: 0.3;
   background-color: #777;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   white-space: nowrap; 
   max-width: 500px; 
   overflow: hidden;
   text-overflow: ellipsis; 
+  padding-bottom: 3px;
+  padding-top: 3px;
 }
+
+.bottomright a{
+  #display:block;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  padding-top: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 150%;
+}
+
+/* link */
+a:link, a:visited, a:hover, a:active {
+  color: #FFF;
+  text-decoration: none;
+}
+
+div.bottomright:hover{
+  opacity: 1;
+}
+
 .topleft {
   position: absolute;
   top: 8px;
@@ -49,22 +70,25 @@ input[type=text]:focus {
   background-color: lightblue;
   opacity: 0.6;
 }
-
+#ddgDiv{
+  float:left; 
+  padding-left: 10px;
+}
 </style>
 </head>
 <body onbeforeunload="">
 <div class='bgimg-1'>
-<div class="bottomright"> IMGTXT </div>
+<div class="bottomright"><a href="https://www.reddit.com/IMGREDDITLINK" target="_blank"> IMGTXT </a></div>
 <div class="topleft">
-  <div style="float:left; padding-right: 15px;">
+  <div id="ddgDiv">
   <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;">
-    <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" placeholder="DuckDuckGo Search...">
+    <input id="ddgSearchBar" type="text" name="q" size="25" value="" autofocus="autofocus" placeholder="DuckDuckGo Search..." spellcheck="false">
     <input type="hidden" name="ia" value="web">
   </form>
   </div>
-  <div style="float:left;">
+  <div style="float:left; padding-left: 10px;">
   <form id="googleSearch" method="get" action="https://www.google.com/search" style="padding:0; margin:0;">
-    <input id="googleSearchBar" type="text" name="q" size="25" value=""  placeholder="Google Search...">
+    <input id="googleSearchBar" type="text" name="q" size="25" value=""  placeholder="Google Search..." spellcheck="false">
   </form>
   </div>
 </div>
@@ -81,5 +105,9 @@ def render_html(filepath):
   #return html
   final_img_url = random.choice(lines)
   splits = final_img_url.split('\t')
-  temp = raw_html.replace("IMGURL", splits[0].strip())
-  return temp.replace("IMGTXT", splits[1].strip())
+  #add reddit img url - IMGREDDITLINK
+  replace_vars = ["IMGURL", "IMGREDDITLINK", "IMGTXT"]
+  temp = raw_html
+  for x in range( len(replace_vars) ):#need to use int for splits traversal
+    temp = temp.replace(replace_vars[x], splits[x].strip())
+  return temp

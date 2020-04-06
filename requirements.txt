@@ -1,8 +1,8 @@
 requests
 json
-Flask=1.1
+flask
 time
 schedule
 random
 Thread
-# flask_sslify
+#flask_sslify

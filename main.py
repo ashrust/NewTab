@@ -1,7 +1,7 @@
-import requests, json, schedule, time, os
+import json, schedule, time, os
 import file_save, render_img, pull_images
 
-from flask import Flask, send_from_directory, request, redirect
+from flask import Flask, send_from_directory
 #from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
@@ -41,7 +41,7 @@ def keep_alive():
 
 def main():
   print ("Starting scheduler and web host...")
-  #pull_images.pullTopImages()
+  pull_images.pullTopImages()
   keep_alive()
   app.run(host='0.0.0.0', port='3000')
 

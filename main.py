@@ -1,5 +1,5 @@
 import schedule, time
-import file_save, render_img, pull_images, autocomplete
+import render_img, pull_images, autocomplete
 
 from flask import Flask, send_from_directory, request, jsonify
 #from flask_sslify import SSLify
@@ -16,7 +16,11 @@ def favicon():
 
 @app.route('/acgoog', methods=['GET'])
 def autocomplete_google():
-  return jsonify( autocomplete.google_suggestions(request.args.get('q')) )
+  return jsonify( autocomplete.get_suggestions('google',request.args.get('q')) )
+
+@app.route('/acddg', methods=['GET'])
+def autocomplete_ddg():
+  return jsonify( autocomplete.get_suggestions('ddg',request.args.get('q')) )
 
 @app.route('/')
 def newtab():

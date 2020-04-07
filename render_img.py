@@ -108,7 +108,7 @@ raw_html = """
         cursor: pointer;
         background-color: #fff;
         border-bottom: 1px solid #d4d4d4;
-        opacity: 0.7;
+        opacity: 0.65;
       }
 
       /*when hovering an item:*/

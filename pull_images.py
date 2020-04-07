@@ -19,8 +19,8 @@ def pullTopImages():
   final_img_urls = []
   for img in data["data"]:
     #print (img)
-    #check if wide and tall enough - 
-    if width <= img['width'] and height <= img['height']:
+    #check if wide and tall enough and landscape
+    if width <= img['width'] and height <= img['height'] and img['width'] > img['height']:
       #save the image url
       #print (img['hash'], img['title'])
       imgur_url = 'https://i.imgur.com/'+img['hash']+'.jpg'

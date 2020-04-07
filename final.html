@@ -1,6 +1,3 @@
-import random
-
-raw_html = """
 <html>
 
   <head>
@@ -276,20 +273,3 @@ raw_html = """
     </script>
   </body>
 </html>
-"""
-
-def render_html(filepath):
-  #open urls File
-  file = open(filepath,"r")
-  #pick image at random
-  lines = file.readlines()
-  #print (lines)
-  #return html
-  final_img_url = random.choice(lines)
-  splits = final_img_url.split('\t')
-  #add reddit img url - IMGREDDITLINK
-  replace_vars = ["IMGURL", "IMGREDDITLINK", "IMGTXT"]
-  temp = raw_html
-  for x in range( len(replace_vars) ):#need to use int for splits traversal
-    temp = temp.replace(replace_vars[x], splits[x].strip())
-  return temp

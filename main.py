@@ -1,7 +1,7 @@
-import json, schedule, time, os
-import file_save, render_img, pull_images
+import schedule, time
+import file_save, render_img, pull_images, autocomplete
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request, jsonify
 #from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
@@ -13,6 +13,10 @@ img_urls_path = "static/image_urls.txt"
 @app.route('/favicon.ico')
 def favicon():
   return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
+
+@app.route('/acgoog', methods=['GET'])
+def autocomplete_google():
+  return jsonify( autocomplete.google_suggestions(request.args.get('q')) )
 
 @app.route('/')
 def newtab():
@@ -41,8 +45,8 @@ def keep_alive():
 
 def main():
   print ("Starting scheduler and web host...")
-  pull_images.pullTopImages()
-  keep_alive()
+  #pull_images.pullTopImages()
+  #keep_alive()
   app.run(host='0.0.0.0', port='3000')
 
 if __name__ == "__main__":

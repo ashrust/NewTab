@@ -50,7 +50,7 @@ def keep_alive():
 def main():
   print ("Starting scheduler and web host...")
   #pull_images.pullTopImages()
-  #keep_alive()
+  keep_alive()
   app.run(host='0.0.0.0', port='3000')
 
 if __name__ == "__main__":

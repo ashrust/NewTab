@@ -14,11 +14,6 @@ img_urls_path = "static/image_urls.txt"
 def favicon():
   return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
 
-@app.route('/xhr.js')
-def xhrjs():
-  return send_from_directory(app.root_path, 'favicon.ico', mimetype='text/javascript')
-
-
 @app.route('/acgoog', methods=['GET'])
 def autocomplete_google():
   return jsonify( autocomplete.get_suggestions('google',request.args.get('q')) )

@@ -12,6 +12,7 @@
     max-width: 500px;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #FFF;
     padding-bottom: 3px;
     padding-top: 3px;
   }

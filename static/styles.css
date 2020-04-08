@@ -1,0 +1,109 @@
+
+  .bottomright {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-family: arial, sans-serif;
+    color: #FFF;
+    font-size: 16px;
+    opacity: 0.3;
+    background-color: #777;
+    border-radius: 5px;
+    white-space: nowrap;
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+
+  .bottomright a {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 150%;
+  }
+
+  /* link */
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  div.bottomright:hover {
+    opacity: 0.9;
+    background-color: #555;
+  }
+
+  .topleft {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font: 16px arial, sans-serif;
+  }
+
+  input[type=text] {
+    font-size: 16px;
+    color: #000;
+    opacity: 0.3;
+  }
+
+  input[type=text]:focus {
+    background-color: lightblue;
+    opacity: 0.6;
+  }
+
+  #ddgDiv {
+    float: left;
+    padding-left: 10px;
+  }
+
+  #googDiv {
+    float: left;
+    padding-left: 10px;
+    position: absolute;
+    left: 265px;
+    /*z-index: -1;*/
+  }
+
+  .autocomplete-items {
+    /*position: absolute;
+    border: 1px solid #d4d4d4;
+    padding: 1px;*/
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+  }
+
+  .autocomplete-items div {
+    padding: 6px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+    opacity: 0.65;
+  }
+
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }

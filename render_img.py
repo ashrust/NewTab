@@ -157,7 +157,7 @@ raw_html = """
     if (!val) {
       return false;
     }
-    //currentFocus = -1;
+    /*currentFocus = -1;*/
     /*create a DIV element that will contain the items (values):*/
     a = document.createElement("DIV");
     a.setAttribute("id", this.id + "autocomplete-list");
@@ -168,13 +168,13 @@ raw_html = """
       return;
     }
     this.parentNode.appendChild(a);
-    //collect query results
+    /*collect query results*/
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        //convert response
+        /* convert response */
         var suggs = JSON.parse(this.responseText);
-        //console.log(suggs)
+        /* console.log(suggs) */
         /*for each item in the array...*/
         for (i = 0; i < suggs.length; i++) {
           /*check if the item starts with the same letters as the text field value:*/
@@ -190,6 +190,7 @@ raw_html = """
             b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              inp.focus()
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -201,7 +202,7 @@ raw_html = """
     };
     xhttp.open("GET", "/acgoog?q=" + this.value, true);
     xhttp.send();
-    console.log(currentFocus)
+    /*console.log(currentFocus)*/
   }
 
   function key_down(e) {
@@ -213,20 +214,27 @@ raw_html = """
       currentFocus++;
       /*and and make the current item more visible:*/
       addActive(x);
-    } else if (e.keyCode == 38) { //up
+    } else if (e.keyCode == 38) { 
       /*If the arrow UP key is pressed,
       decrease the currentFocus variable:*/
       currentFocus--;
       /*and and make the current item more visible:*/
       addActive(x);
+    } else if (e.keyCode == 39) { 
+      /*If the arrow RIGHT key is pressed:*/
+      /* SIMULATE A CLICK */
+      if (x) x[currentFocus].click();
     } else if (e.keyCode == 13) {
       /*If the ENTER key is pressed, prevent the form from being submitted,*/
-      //e.preventDefault();
+      /* e.preventDefault(); */
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
-        if (x) x[currentFocus].click();
+        if (x){
+          x[currentFocus].click();
+          /*console.log("click on active item")*/
+        } 
       } else {
-        console.log("current focus is -1")
+        /*console.log("Enter Pressed - submitting")*/
         document.getElementById("googleSearch").submit();
       }
     }
@@ -259,7 +267,7 @@ raw_html = """
         x[i].parentNode.removeChild(x[i]);
       }
     }
-    console.log(currentFocus)
+    /*console.log("close all lists done "+currentFocus)*/
     currentFocus = -1
   }
   /*execute a function when someone writes in the text field:*/
@@ -285,7 +293,7 @@ function showDDGHint(inp) {
     if (!val) {
       return false;
     }
-    //currentFocus = -1;
+    /* currentFocus = -1; */
     /*create a DIV element that will contain the items (values):*/
     a = document.createElement("DIV");
     a.setAttribute("id", this.id + "autocomplete-list");
@@ -296,13 +304,13 @@ function showDDGHint(inp) {
       return;
     }
     this.parentNode.appendChild(a);
-    //collect query results
+    /* collect query results */
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        //convert response
+        /* convert response */
         var suggs = JSON.parse(this.responseText);
-        //console.log(suggs)
+        /* console.log(suggs) */
         /*for each item in the array...*/
         for (i = 0; i < suggs.length; i++) {
           /*check if the item starts with the same letters as the text field value:*/
@@ -318,6 +326,7 @@ function showDDGHint(inp) {
             b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              inp.focus()
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -329,7 +338,7 @@ function showDDGHint(inp) {
     };
     xhttp.open("GET", "/acddg?q=" + this.value, true);
     xhttp.send();
-    console.log(currentFocus)
+    /*console.log(currentFocus)*/
   }
 
   function key_down(e) {
@@ -341,20 +350,24 @@ function showDDGHint(inp) {
       currentFocus++;
       /*and and make the current item more visible:*/
       addActive(x);
-    } else if (e.keyCode == 38) { //up
+    } else if (e.keyCode == 38) { 
       /*If the arrow UP key is pressed,
       decrease the currentFocus variable:*/
       currentFocus--;
       /*and and make the current item more visible:*/
       addActive(x);
+    } else if (e.keyCode == 39) { 
+      /*If the arrow RIGHT key is pressed*/
+      /* SIMULATE A CLICK */
+      if (x) x[currentFocus].click();
     } else if (e.keyCode == 13) {
       /*If the ENTER key is pressed, prevent the form from being submitted,*/
-      //e.preventDefault();
+      /* e.preventDefault(); */
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
       } else {
-        console.log("current focus is -1")
+        /*console.log("current focus is -1")*/
         document.getElementById("ddgSearch").submit();
       }
     }
@@ -387,7 +400,7 @@ function showDDGHint(inp) {
         x[i].parentNode.removeChild(x[i]);
       }
     }
-    console.log(currentFocus)
+    /*console.log(currentFocus)*/
     currentFocus = -1
   }
   /*execute a function when someone writes in the text field:*/

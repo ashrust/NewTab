@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="static/styles.css">
     <style>
     html {
-      background: url(IMGURL) no-repeat center center fixed;
+      background: url({{ imgurl }}) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -17,7 +17,7 @@
 
   <body>
     <div class='bgimg-1'>
-      <div class="bottomright"><a href="https://www.reddit.comIMGREDDITLINK" target="_blank"> IMGTXT </a></div>
+      <div class="bottomright"><a href="https://www.reddit.com{{imgreddit}}}" target="_blank"> {{ imgtext }} </a></div>
       <div class="topleft">
         <div id="ddgDiv">
           <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;" autocomplete="off">

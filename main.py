@@ -1,7 +1,7 @@
 import schedule, time
 import render_img, pull_images, autocomplete
 
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, render_template
 #from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
@@ -24,7 +24,8 @@ def autocomplete_ddg():
 
 @app.route('/')
 def newtab():
-  return render_img.render_html(img_urls_path)
+  image = render_img.get_image(img_urls_path)
+  return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
 
 @app.route('/runimages')
 def root():

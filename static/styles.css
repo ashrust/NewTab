@@ -42,6 +42,7 @@
     background-color: #555;
   }
 
+  /* search forms */
   .topleft {
     position: absolute;
     top: 8px;
@@ -56,6 +57,7 @@
     border: none;
     padding: 3px 3px 3px 5px;
     border-radius: 3px;
+    width: 255px;
   }
 
   input[type=text]:focus {
@@ -63,17 +65,14 @@
     opacity: 0.6;
   }
 
-  /* search forms */
   #ddgDiv {
     float: left;
     padding-left: 10px;
   }
 
   #googDiv {
-    float: left;
-    padding-left: 10px;
     position: absolute;
-    left: 265px;
+    left: 285px;
   }
 
   .autocomplete-items {

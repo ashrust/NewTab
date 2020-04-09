@@ -7,29 +7,35 @@ app = Flask(__name__, static_folder='static')
 
 img_urls_path = "static/image_urls.txt"
 
+#render favicon
 @app.route('/favicon.ico')
 def favicon():
   return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/x-icon')
 
+#google search suggestions
 @app.route('/acgoog', methods=['GET'])
 def autocomplete_google():
   return jsonify( autocomplete.get_suggestions('google',request.args.get('q')) )
 
+#duckduckgo search suggestions
 @app.route('/acddg', methods=['GET'])
 def autocomplete_ddg():
   return jsonify( autocomplete.get_suggestions('ddg',request.args.get('q')) )
 
+#new tab page
 @app.route('/')
 def newtab():
   image = render_img.get_image(img_urls_path)
   return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
 
+#manually run image collection
 @app.route('/runimages')
 def runimages():
   pull_images.pullTopImages()
   return "Image collection is running"
   #return app.send_static_file('./image_urls.txt')
 
+#scheduling for image collection
 def img_scheduler():
   print("Scheduling daily image job...")
   schedule.every().day.at("10:00").do(pull_images.pullTopImages)
@@ -41,10 +47,12 @@ def img_scheduler():
       print("Current jobs:",schedule.jobs)
       time.sleep(50)
 
+#keep image collection job on schedule
 def keep_alive():  
     t = Thread(target=img_scheduler)
     t.start()
 
+#start the web server and scheduling job
 def main():
   print ("Starting scheduler and web host...")
   #pull_images.pullTopImages()

@@ -57,7 +57,7 @@
     border: none;
     padding: 3px 3px 3px 5px;
     border-radius: 3px;
-    width: 255px;
+    width: 235px;
   }
 
   input[type=text]:focus {
@@ -72,7 +72,7 @@
 
   #googDiv {
     position: absolute;
-    left: 285px;
+    left: 265px;
   }
 
   .autocomplete-items {

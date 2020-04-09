@@ -20,17 +20,24 @@ def pullTopImages():
   for img in data["data"]:
     #print (img)
     #check if wide and tall enough and landscape
+    #print (img['hash'], img['width'], img['height'])
     if width <= img['width'] and height <= img['height'] and img['width'] > img['height']:
       #save the image url
       #print (img['hash'], img['title'])
       imgur_url = 'https://i.imgur.com/'+img['hash']+'.jpg'
-      imgur_url = imgur_url + '\t'+ img['reddit'] + '\t' + trimTitle(img['title'])
+      imgur_url = imgur_url + '\t'+ "https://www.reddit.com"+ img['reddit'] + '\t' + trimTitle(img['title'])
       final_img_urls.append(imgur_url)
       
-    #print (img['hash'], img['width'], img['height'])
   #save urls/titles to a file
-  file_save.save_urls(final_img_urls, img_urls_path)
-  print ("Image collection complete")
+  #TODO - add images to previous if <5 for today. Read current file
+  #collect urls, loop over new imgs list and if img isn't in current, add to current
+  if len(final_img_urls) > 0:
+    file_save.save_urls(final_img_urls, img_urls_path)
+    print ("Image collection complete")
+  else:
+    #leave current file as is
+    print ("Image collection unsuccessful. No new images to add. Keeping old file.")
+
 
 def trimTitle(title):
   #split title by spaces

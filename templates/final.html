@@ -13,14 +13,14 @@
       background-size: cover;
       background-image: url({{ imgurl }});
       height: 100%;
-      transition: opacity 300ms;
+      transition: opacity 200ms;
     }
     </style>
   </head>
 
   <body onload="showBackground()">
     <div id='bg'></div>
-      <div class="bottomright"><a href="https://www.reddit.com{{imgreddit}}}" target="_blank"> {{ imgtext }} </a></div>
+      <div class="bottomright"><a href="{{imgreddit}}" target="_blank"> {{ imgtext }} </a></div>
       <div class="topleft">
         <div id="ddgDiv">
           <form id="ddgSearch" method="get" action="https://duckduckgo.com/" style="padding:0; margin:0;" autocomplete="off">

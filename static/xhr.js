@@ -21,11 +21,11 @@ function showHint(inp, engine) {
         }
         this.parentNode.appendChild(a);
         /*collect query and draw results*/
-        collect_suggestions(a, engine);
+        collect_suggestions(a, val, engine);
         /*console.log(currentFocus)*/
     }
 
-    function collect_suggestions(a, engine){
+    function collect_suggestions(a, val, engine){
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -57,11 +57,12 @@ function showHint(inp, engine) {
               }
           }
       };
+      /*console.log("input", inp, inp.value)*/
       if (engine == "google"){
-        xhttp.open("GET", "/acgoog?q=" + this.value, true);
+        xhttp.open("GET", "/acgoog?q=" + inp.value, true);
       }
       else{
-        xhttp.open("GET", "/acddg?q=" + this.value, true);
+        xhttp.open("GET", "/acddg?q=" + inp.value, true);
       }
       xhttp.send();
     }
@@ -146,7 +147,7 @@ showHint(document.getElementById("ddgSearchBar"), 'ddg');
 document.getElementById("ddgSearchBar").focus();
 
 function showBackground(){
-  console.log('showing background');
+  /*console.log('showing background');*/
   elem = document.getElementById("bg");
   elem.style.opacity='1';
   elem.style.marginTop ='0px';

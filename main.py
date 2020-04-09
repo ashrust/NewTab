@@ -52,7 +52,7 @@ def keep_alive():
     t = Thread(target=img_scheduler)
     t.start()
 
-#start the web server and scheduling job
+#start the web server and scheduling j
 def main():
   print ("Starting scheduler and web host...")
   #pull_images.pullTopImages()

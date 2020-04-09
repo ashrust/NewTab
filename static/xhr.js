@@ -144,3 +144,8 @@ function showHint(inp, engine) {
 showHint(document.getElementById("googleSearchBar"), 'google');
 showHint(document.getElementById("ddgSearchBar"), 'ddg');
 document.getElementById("ddgSearchBar").focus();
+
+function showBackground(){
+  console.log('showing background');
+  document.getElementById("bg").style.opacity='1';
+}

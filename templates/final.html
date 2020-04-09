@@ -5,18 +5,21 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
     <link rel="stylesheet" href="static/styles.css">
     <style>
-    html {
-      background: url({{ imgurl }}) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
+    #bg {
+      position: relative;
+      opacity: 0;
+      background-position: center;
+      background-repeat: no-repeat;
       background-size: cover;
+      background-image: url({{ imgurl }});
+      height: 100%;
+      transition: opacity 300ms;
     }
     </style>
   </head>
 
-  <body>
-    <div class='bgimg-1'>
+  <body onload="showBackground()">
+    <div id='bg'></div>
       <div class="bottomright"><a href="https://www.reddit.com{{imgreddit}}}" target="_blank"> {{ imgtext }} </a></div>
       <div class="topleft">
         <div id="ddgDiv">
@@ -34,7 +37,6 @@
           </form>
         </div>
       </div>
-    </div>
     <script src="static/xhr.js"></script>
   </body>
 </html>

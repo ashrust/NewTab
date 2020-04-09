@@ -147,5 +147,7 @@ document.getElementById("ddgSearchBar").focus();
 
 function showBackground(){
   console.log('showing background');
-  document.getElementById("bg").style.opacity='1';
+  elem = document.getElementById("bg");
+  elem.style.opacity='1';
+  elem.style.marginTop ='0px';
 }

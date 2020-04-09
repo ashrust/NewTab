@@ -2,11 +2,8 @@ import schedule, time
 import render_img, pull_images, autocomplete
 
 from flask import Flask, send_from_directory, request, jsonify, render_template
-#from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
-#app = Flask('')
-#sslify = SSLify(app)
 
 img_urls_path = "static/image_urls.txt"
 
@@ -28,7 +25,7 @@ def newtab():
   return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
 
 @app.route('/runimages')
-def root():
+def runimages():
   pull_images.pullTopImages()
   return "Image collection is running"
   #return app.send_static_file('./image_urls.txt')

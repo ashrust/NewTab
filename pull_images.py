@@ -1,11 +1,12 @@
 import requests
 import file_save
 
-collect_images_url = 'https://imgur.com/r/earthporn/top/day.json'
+collect_images_url = 'https://imgur.com/r/earthporn/top/month.json'
 
 width = 3840
 height = 2160
 img_urls_path = "static/image_urls.txt"
+banned_imgs_path = "static/banned_images.txt"
 min_images = 5
 
 brackets_list = ['[',']','{','}','(',')']
@@ -32,6 +33,8 @@ def getFinalImages(data):
   #collect existing image info
   existing_images = getExistingImages()
   #print("existing_images", existing_images)
+  #collect banned image_urls
+  banned_images = getBannedImages()
 
   #loop over top images in json response
   final_img_urls = []
@@ -41,6 +44,10 @@ def getFinalImages(data):
     if width <= img['width'] and height <= img['height'] and img['width'] > img['height']:
       #create img url 
       imgur_url = 'https://i.imgur.com/'+img['hash']+'.jpg'
+      #check if image banned, if so ignore
+      if imgur_url in banned_images: 
+        print ("Ignoring banned image: ", imgur_url)
+        continue
       #check if image already present
       #if so, don't replace current text and link
       if imgur_url not in existing_images:
@@ -72,18 +79,29 @@ def getFinalImages(data):
 def getExistingImages():
   #open urls File
   file = open(img_urls_path,"r")
-  line = file.readline()
+  lines = file.readlines()
   existing_images = {}
-  while line:
+  for line in lines:
     #ignore blank lines
     if len(line.strip()) < 1: continue
     #split line
     image = line.split('\t')
     #print("image", image)
     existing_images[image[0]] = [image[1], image[2]]
-    line = file.readline()
-
   return existing_images
+
+def getBannedImages():
+  banned_images = {}
+  #open urls File
+  file = open(banned_imgs_path,"r")
+  lines = file.readlines()
+  for line in lines:
+    #ignore blank lines
+    line = line.strip()
+    if len(line) < 1: continue
+    #store banned url
+    banned_images[line] = 1
+  return banned_images
 
 def trimTitle(title):
   #split title by spaces

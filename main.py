@@ -1,4 +1,4 @@
-import schedule, time
+import schedule, time, hashlib
 import render_img, pull_images, autocomplete
 
 from flask import Flask, send_from_directory, request, jsonify, render_template
@@ -29,7 +29,10 @@ def newtab():
   return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
 
 #manually run image collection
-@app.route('/runimages')
+hash_str = hashlib.sha256(time.ctime().encode('utf-8')).hexdigest()
+run_images_url = '/runimages-'+hash_str
+print("run images url: ",run_images_url)
+@app.route(run_images_url)
 def runimages():
   pull_images.pullTopImages()
   return "Image collection is running"

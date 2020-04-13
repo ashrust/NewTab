@@ -2,8 +2,10 @@ import schedule, time, hashlib
 import render_img, pull_images, autocomplete
 
 from flask import Flask, send_from_directory, request, jsonify, render_template
+from flask_sslify import SSLify
 from threading import Thread
 app = Flask(__name__, static_folder='static')
+sslify = SSLify(app)
 
 img_urls_path = "static/image_urls.txt"
 

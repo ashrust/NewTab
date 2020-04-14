@@ -1,7 +1,7 @@
 /* manifest.json - required for chrome extensions*/
 {
   "name": "NewTab - Beautiful Images &amp; Simple Search",
-  "description": "Sets your New Tab Page to a beautiful and simple page with no ads or trackers.",
+  "description": "Sets your New Tab Page to a beautiful and simple page with no ads or trackers: NewTab.click.",
   "version": "0.1",
   "chrome_url_overrides": {
     "newtab": "newtab.html"

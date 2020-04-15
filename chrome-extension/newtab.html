@@ -1,22 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta name="generator" content="HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+    <script src="script.js"></script>
     <title>
         Redirecting to New Tab
     </title>
-    <script type="text/javascript">
-        var url = "https://newtab.click";
-
-        function redirect() {
-            document.location.href = url;
+    <style type="text/css">
+        #notloaded{
+            transition: opacity 1s;
+            -webkit-transition: opacity 1s;
+            opacity: 0;
+            color: #555;
+            font-size: 16px;
+            font-family:arial, sans-serif;
+            padding:10% 10%;
         }
-    </script>
+    </style>
 </head>
 
-<body onload="setTimeout('redirect()',100);redirect();return false;">
-    <div>Redirecting... If your page doesn't load within 5 seconds, <a href="javascript:r()">click here</a></div>
+<body>
+    <div id="notloaded">Redirecting... If your page doesn't load within 5 seconds, <a href="https://newtab.click">click here</a></div>
 </body>
 
 </html>

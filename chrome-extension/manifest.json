@@ -6,7 +6,6 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
-  "permissions": ["tabs","activeTab"],
   "manifest_version": 2
 }
 /* end manifest */

@@ -29,6 +29,12 @@ def autocomplete_ddg():
 def newtab():
   image = render_img.get_image(img_urls_path)
   return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
+  
+#info page
+@app.route('/info')
+def infopage():
+  image = render_img.get_image(img_urls_path)
+  return render_template("info.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
 
 #manually run image collection
 hash_str = hashlib.sha256(time.ctime().encode('utf-8')).hexdigest()

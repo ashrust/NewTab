@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>New Tab Info</title>
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+    #bg {
+      position: relative;
+      opacity: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url({{ imgurl }});
+      height: 100%;
+      margin-top: 5px;
+      transition: opacity 100ms, margin-top 100ms;
+    }
+    </style>
+  </head>
+
+  <body >
+    <div id='bg'></div>
+      <div class="bottomright"><a href="{{imgreddit}}" target="_blank"> {{ imgtext }} </a></div>
+      <div class="infotext">
+        <h1>Overview</h1>
+        <p></p>
+        <h1>How to Use</h1>
+        <p></p>
+        <h1>Usage &amp; Support</h1>
+        <p></p>
+        <h1>Code</h1>
+        <p></p>
+        <h1>Credits</h1>
+        <p></p>
+      </div>
+    <script src="static/xhr.js"></script>
+  </body>
+</html>

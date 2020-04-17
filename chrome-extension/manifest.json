@@ -1,6 +1,6 @@
 {
   "name": "NewTab - Beautiful Images & Simple Search",
-  "description": "Sets your New Tab Page to a beautiful and simple search page with no ads or trackers.",
+  "description": "Sets your New Tab page to a beautiful and simple search page with no ads or trackers.",
   "version": "0.1",
   "chrome_url_overrides": {
     "newtab": "newtab.html"

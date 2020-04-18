@@ -1,3 +1,12 @@
+function showBackground(){
+  /*console.log('showing background');*/
+  elem = document.getElementById("bg");
+  elem.style.opacity='1';
+  elem.style.marginTop ='0px';
+}
+
+showBackground();
+
 function showHint(inp, engine) {
 
     var currentFocus;
@@ -145,12 +154,4 @@ function showHint(inp, engine) {
 showHint(document.getElementById("googleSearchBar"), 'google');
 showHint(document.getElementById("ddgSearchBar"), 'ddg');
 
-function showBackground(){
-  /*console.log('showing background');*/
-  elem = document.getElementById("bg");
-  elem.style.opacity='1';
-  elem.style.marginTop ='0px';
-}
-
-showBackground();
 document.getElementById("ddgSearchBar").focus();

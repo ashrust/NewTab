@@ -1,7 +1,7 @@
 {
   "name": "NewTab - Beautiful Images & Simple Search",
   "description": "Sets your New Tab page to a beautiful and simple search page with no ads or trackers.",
-  "version": "0.1",
+  "version": "0.2",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
@@ -9,5 +9,12 @@
              "32": "icon32.png",
              "48": "icon48.png",
             "128": "icon128.png" },
+  "browser_action": {
+          "default_icon": {                    
+            "16": "icon16.png",         
+            "32": "icon32.png",
+            "48": "icon48.png"
+          }
+  },
   "manifest_version": 2
 }

@@ -4,9 +4,7 @@
 
 [NewTab](https://newtab.click) is simple new tab page with beautiful background images, simple search and no ads or trackers. 
 
-I was frustrated that no extension doing this existed for Safari, so I built it. You can also use it on Google Chrome and Microsoft Edge.
-
-Every night, the app collects links to the top images from [Reddit](https://www.reddit.com/) via [Imgur](http://imgur.com/). The default search engine is [DuckDuckGo](http://duckduckgo.com/) but you can hit tab to switch to Google. 
+I was frustrated that no extension doing this existed for Safari, so I built it. You can also use it on Google Chrome and Microsoft Edge.Every night, the app collects links to the top images from [Reddit](https://www.reddit.com/) via [Imgur](http://imgur.com/). The default search engine is [DuckDuckGo](http://duckduckgo.com/) but you can hit tab to switch to Google. 
 
 Made by [Ash Rust](https://twitter.com/@ashrust).
 
@@ -18,26 +16,29 @@ In the **NewTab** folder run:
 * **pip install -r requirements.txt**
 * **python main.py**
 
-This will start the web server. Point any domain, with SSL, at the web server and you're live!
+This will start the web server. Point any domain, with SSL, at the web server and you're live! If you'd prefer to try it out without SSL, comment out line 8 in **main.py**.
 
-If you'd prefer to try it out without SSL, comment out line 8 in **main.py**.
+You can also try a slightly older version on [Repl.it]().
 
 ### Browser Installation
 **Safari:**
 * Go to Safari's Preferences
-* Under the _General_ tab, set your homepage to: https://newtab.click
+* Under the _General_ tab, set your homepage to: **<YOUR DOMAIN NAME>** e.g. https://newtab.click
 * Then set _New tabs open with_ to **Homepage**
 * Lastly set _New windows open with_ to **Homepage** 
 
 **Chrome:**
-The chrome extension is [available here](https://chrome.google.com/webstore/detail/newtab-beautiful-images-s/ccelhhdengdfdgadooapdijgfehmojej)
+
+To create your own extension, edit line 1 of **script.js** in the **chrome-extension** folder to be your domain. You can then load the unpacked extension from Chrome, under _Window_, then _Extensions_. 
+If you would like others to be able to easily install your extension, [submit the extension to the Chrome Webstore](https://developer.chrome.com/webstore/publish).
 
 **Edge:**
-Here's how to [add Chrome extensions to Edge](https://support.microsoft.com/en-us/help/4538971/microsoft-edge-add-or-remove-extensions) (scroll down)
+
+Information on how to port a Chrome extension to Edge is [here](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/developer-guide/port-chrome-extension).
 
 ## Support & Contributing
 
-This software is provided for free and comes with absolutely no warranty or customer support whatsoever. 
+This software is provided free and [open source](), it comes with absolutely no warranty or customer support whatsoever. 
 
 If you find a bug or would like to contribute code to the project, contact [Ash Rust](https://twitter.com/@ashrust).
 

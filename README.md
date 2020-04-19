@@ -48,6 +48,7 @@ If you find a bug or would like to contribute code to the project, contact [Ash 
 
 This software is released under the [MIT license](http://bit.ly/mit-license). You *may not* redistribute this software without proper attribution.
 
-* Monitoring is provided by [UptimeRobot](https://uptimerobot.com/)
+* Monitoring provided by [UptimeRobot](https://uptimerobot.com/)
 * Globe icon is from the [Vistoon](https://findicons.com/icon/60415/globe) icon pack under Creative Commons
 * Code for query suggestions was adapted from tutorials on [W3Schools](https://www.w3schools.com/js/default.asp)
+* Default image by [Ricardo Gomez Angel](https://unsplash.com/photos/TkSi_p-5HR0).

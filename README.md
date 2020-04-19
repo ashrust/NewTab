@@ -23,7 +23,7 @@ You can also try a slightly older version on [Repl.it]().
 ### Browser Installation
 **Safari:**
 * Go to Safari's Preferences
-* Under the _General_ tab, set your homepage to: **<YOUR DOMAIN NAME>** e.g. https://newtab.click
+* Under the _General_ tab, set your homepage to: **YOUR DOMAIN NAME** e.g. https://newtab.click
 * Then set _New tabs open with_ to **Homepage**
 * Lastly set _New windows open with_ to **Homepage** 
 

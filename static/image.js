@@ -4,4 +4,4 @@ function showBackground(){
   elem.style.opacity='1';
   elem.style.marginTop ='0px';
 }
-document.addEventListener("DOMContentLoaded", showBackground);
+document.addEventListener("load", showBackground);

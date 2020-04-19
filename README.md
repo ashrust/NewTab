@@ -10,6 +10,8 @@ Made by [Ash Rust](https://twitter.com/@ashrust).
 
 ## How to Use
 
+First clone the [repo on GitHub]().
+
 ### Running your own server
 
 In the **NewTab** folder run: 

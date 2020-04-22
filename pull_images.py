@@ -1,7 +1,7 @@
 import requests
 import file_save
 
-collect_images_url = 'https://imgur.com/r/earthporn/top/month.json'
+collect_images_url = 'https://imgur.com/r/earthporn/top/week.json'
 
 width = 3840
 height = 2160
@@ -56,6 +56,8 @@ def getFinalImages(data):
         imgur_url = imgur_url + '\t'+ existing_images[imgur_url][0] + '\t' + existing_images[imgur_url][1]
       #save the image for storage
       final_img_urls.append(imgur_url)
+
+  print("new image collection results", final_img_urls)
 
   #check if final_img_urls long enough
   #if not, add non duplicate current images to final list

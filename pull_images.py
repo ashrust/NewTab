@@ -1,7 +1,9 @@
 import requests
 import file_save
+import os
 
-collect_images_url = 'https://imgur.com/r/earthporn/top/week.json'
+collect_images_url = 'https://api.imgur.com/3/gallery/r/earthporn/top/week/'
+client_id = os.getenv("CLIENT_ID")
 
 width = 3840
 height = 2160
@@ -14,6 +16,14 @@ brackets_list = ['[',']','{','}','(',')']
 #pull top images from reddit
 def pullTopImages():
   #collect new image info as json
+  payload = {}
+  files = {}
+  headers = {
+    'Authorization': 'Client-ID {}'.format(client_id)
+  }
+  response = requests.request("GET", collect_images_url, headers=headers, data = payload, files = files)
+
+  #print(response.text.encode('utf8'))
   resp = requests.get(url=collect_images_url)
   data = resp.json()
 
@@ -43,7 +53,7 @@ def getFinalImages(data):
     #check if wide and tall enough and landscape
     if width <= img['width'] and height <= img['height'] and img['width'] > img['height']:
       #create img url 
-      imgur_url = 'https://i.imgur.com/'+img['hash']+'.jpg'
+      imgur_url = img['link']
       #check if image banned, if so ignore
       if imgur_url in banned_images: 
         print ("Ignoring banned image: ", imgur_url)
@@ -51,7 +61,7 @@ def getFinalImages(data):
       #check if image already present
       #if so, don't replace current text and link
       if imgur_url not in existing_images:
-        imgur_url = imgur_url + '\t'+ "https://www.reddit.com"+ img['reddit'] + '\t' + trimTitle(img['title'])
+        imgur_url = imgur_url + '\t'+ imgur_url + '\t' + trimTitle(img['title'])
       else:
         imgur_url = imgur_url + '\t'+ existing_images[imgur_url][0] + '\t' + existing_images[imgur_url][1]
       #save the image for storage

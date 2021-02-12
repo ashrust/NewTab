@@ -66,7 +66,7 @@ def keep_alive():
 #start the web server and scheduling job
 def main():
   print ("Starting scheduler and web host...")
-  #pull_images.pullTopImages()
+  pull_images.pullTopImages()
   keep_alive()
   app.run(host='0.0.0.0', port='3000')
 

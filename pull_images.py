@@ -1,8 +1,9 @@
 import requests
 import file_save
+import os
 
 collect_images_url = 'https://api.imgur.com/3/gallery/r/earthporn/top/week/'
-client_id = '0b72109c1cd3f5b'
+client_id = os.getenv("CLIENT_ID")
 
 width = 3840
 height = 2160

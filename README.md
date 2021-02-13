@@ -4,15 +4,14 @@
 
 [NewTab](https://newtab.click) is simple new tab page with beautiful background images, simple search and no ads or trackers. 
 
-I was frustrated that no extension for this existed on Safari, so I built it. You can also use it on Google Chrome, Brave and Microsoft Edge. Every night, the app collects links to the top images from [Reddit](https://www.reddit.com/) via [Imgur](http://imgur.com/). The default search engine is [DuckDuckGo](http://duckduckgo.com/) but you can hit tab to switch to Google. 
+I was frustrated that no extension for this existed on Safari, so I built it. You can also use it on Google Chrome, Brave and Microsoft Edge. Every night, the app collects links to the top images from [Reddit's](https://www.reddit.com/) API. The default search engine is [DuckDuckGo](http://duckduckgo.com/) but you can hit tab to switch to Google. 
 
 Made by [Ash Rust](https://twitter.com/@ashrust).
 
 ## How to Use
 
-First clone the [repo on GitHub](https://github.com/ashrust/NewTab).
-
 ### Running your own server
+First clone the [repo on GitHub](https://github.com/ashrust/NewTab).
 
 In the **NewTab** folder run: 
 * **pip install -r requirements.txt**

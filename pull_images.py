@@ -30,12 +30,12 @@ def pullTopImages():
 
     #get urls to save
     image_urls = image_urls + getFinalImages(reddit, time_period)
-    print("time, images count", time_period, len(image_urls))
+    #print("time, images count", time_period, len(image_urls))
 
     #save urls/titles to a file, stop when we have enough
     if len(image_urls) >= min_images:
       file_save.save_urls(image_urls, img_urls_path)
-      print ("Image collection complete")
+      print ("Image collection complete, reached top by:", time_period, len(image_urls))
       break
   
   #still not enough after trying all urls.

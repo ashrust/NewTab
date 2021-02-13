@@ -1,9 +1,12 @@
-import requests
+import requests, praw
 import file_save
 import os
 
-collect_images_url = 'https://api.imgur.com/3/gallery/r/earthporn/top/week/'
+collect_images_urls = ['day', 'week', 'month']
+subreddit = "EarthPorn"
+
 client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
 
 width = 3840
 height = 2160
@@ -16,30 +19,32 @@ brackets_list = ['[',']','{','}','(',')']
 #pull top images from reddit
 def pullTopImages():
   #collect new image info as json
-  payload = {}
-  files = {}
-  headers = {
-    'Authorization': 'Client-ID {}'.format(client_id)
-  }
-  response = requests.request("GET", collect_images_url, headers=headers, data = payload, files = files)
 
-  #print(response.text.encode('utf8'))
-  resp = requests.get(url=collect_images_url)
-  data = resp.json()
+  image_urls = []
+  for time_period in collect_images_urls:
+    reddit = praw.Reddit(
+      client_id=client_id,
+      client_secret=client_secret,
+      user_agent="NewTab by u/ashrust"
+    ) 
 
-  #get urls to save
-  image_urls = getFinalImages(data)
+    #get urls to save
+    image_urls = image_urls + getFinalImages(reddit, time_period)
+    print("time, images count", time_period, len(image_urls))
 
-  #save urls/titles to a file
-  if len(image_urls) > 0:
-    file_save.save_urls(image_urls, img_urls_path)
-    print ("Image collection complete")
-  else:
+    #save urls/titles to a file, stop when we have enough
+    if len(image_urls) >= min_images:
+      file_save.save_urls(image_urls, img_urls_path)
+      print ("Image collection complete")
+      break
+  
+  #still not enough after trying all urls.
+  if len(image_urls) < min_images:
     #leave current file as is
     print ("Image collection unsuccessful. No new images to add. Keeping existing file.")
 
 
-def getFinalImages(data):
+def getFinalImages(reddit, time_period):
   #collect existing image info
   existing_images = getExistingImages()
   #print("existing_images", existing_images)
@@ -48,42 +53,27 @@ def getFinalImages(data):
 
   #loop over top images in json response
   final_img_urls = []
-  for img in data["data"]:
-    #print (img['hash'], img['width'], img['height'])
+  for img in reddit.subreddit(subreddit).top(time_period):
+    #print("img: ",vars(img))
+    curr_img_width = img.preview['images'][0]['source']['width']
+    curr_img_height = img.preview['images'][0]['source']['height']
+    #print ("curr height, width", curr_img_height, curr_img_width)
     #check if wide and tall enough and landscape
-    if width <= img['width'] and height <= img['height'] and img['width'] > img['height']:
+    if width <= curr_img_width and height <= curr_img_height and curr_img_width > curr_img_height:
       #create img url 
-      imgur_url = img['link']
+      imgur_url = img.url
       #check if image banned, if so ignore
       if imgur_url in banned_images: 
         print ("Ignoring banned image: ", imgur_url)
         continue
-      #check if image already present
-      #if so, don't replace current text and link
+      #if image already present, Keep current text and link
       if imgur_url not in existing_images:
-        imgur_url = imgur_url + '\t'+ imgur_url + '\t' + trimTitle(img['title'])
+        imgur_url = imgur_url + '\t'+ "http://reddit.com"+ img.permalink + '\t' + trimTitle(img.title)
       else:
         imgur_url = imgur_url + '\t'+ existing_images[imgur_url][0] + '\t' + existing_images[imgur_url][1]
-      #save the image for storage
-      final_img_urls.append(imgur_url)
-
-  print("new image collection results", final_img_urls)
-
-  #check if final_img_urls long enough
-  #if not, add non duplicate current images to final list
-  if len(final_img_urls) < min_images:
-    print("finalimg urls too short, adding existing images")
-    for url,data in existing_images.items():
-      #nested loop but we know the final image list is shorter than the min
-      present = False
-      for line in final_img_urls:
-        #if the url is present, stop loop
-        if url in line:
-          present = True
-          break
-      if not present:
-        output = url + '\t'+ existing_images[url][0] + '\t' + existing_images[url][1]
-        final_img_urls.append(output)
+      #save the image for storage, if not already present in final
+      if imgur_url not in final_img_urls:
+        final_img_urls.append(imgur_url)
 
   return final_img_urls
 

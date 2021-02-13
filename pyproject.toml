@@ -10,8 +10,9 @@ name = "ntsite37"
 version = "0.1.0"
 [tool.poetry.dependencies]
 flask = "^1.1"
-python = "^3.7"
-schedule = "^0.6.0"
-flask-sslify = "^0.1.5"
 flask-minify = "^0.18.0"
+flask-sslify = "^0.1.5"
+python = "^3.8"
+schedule = "^0.6.0"
+praw = "^7.1.4"
 [tool.poetry.dev-dependencies]

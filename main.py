@@ -49,7 +49,7 @@ def runimages():
 #scheduling for image collection
 def img_scheduler():
   print("Scheduling daily image job...")
-  schedule.every(3).hours.do(pull_images.pullTopImages)
+  schedule.every(1).hours.do(pull_images.pullTopImages)
   while True:
       #print("While loop for scheduler")
       schedule.run_pending()

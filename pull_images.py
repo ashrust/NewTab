@@ -54,26 +54,31 @@ def getFinalImages(reddit, time_period):
   #loop over top images in json response
   final_img_urls = []
   for img in reddit.subreddit(subreddit).top(time_period):
-    #print("img: ",vars(img))
-    curr_img_width = img.preview['images'][0]['source']['width']
-    curr_img_height = img.preview['images'][0]['source']['height']
-    #print ("curr height, width", curr_img_height, curr_img_width)
-    #check if wide and tall enough and landscape
-    if width <= curr_img_width and height <= curr_img_height and curr_img_width > curr_img_height:
-      #create img url 
-      imgur_url = img.url
-      #check if image banned, if so ignore
-      if imgur_url in banned_images: 
-        print ("Ignoring banned image: ", imgur_url)
-        continue
-      #if image already present, Keep current text and link
-      if imgur_url not in existing_images:
-        imgur_url = imgur_url + '\t'+ "http://reddit.com"+ img.permalink + '\t' + trimTitle(img.title)
-      else:
-        imgur_url = imgur_url + '\t'+ existing_images[imgur_url][0] + '\t' + existing_images[imgur_url][1]
-      #save the image for storage, if not already present in final
-      if imgur_url not in final_img_urls:
-        final_img_urls.append(imgur_url)
+    #print("img: ", vars(img))
+    try:
+      img.preview
+    except AttributeError:
+        pass
+    else:
+      curr_img_width = img.preview['images'][0]['source']['width']
+      curr_img_height = img.preview['images'][0]['source']['height']
+      #print ("curr height, width", curr_img_height, curr_img_width)
+      #check if wide and tall enough and landscape
+      if width <= curr_img_width and height <= curr_img_height and curr_img_width > curr_img_height:
+        #create img url 
+        imgur_url = img.url
+        #check if image banned, if so ignore
+        if imgur_url in banned_images: 
+          print ("Ignoring banned image: ", imgur_url)
+          continue
+        #if image already present, Keep current text and link
+        if imgur_url not in existing_images:
+          imgur_url = imgur_url + '\t'+ "http://reddit.com"+ img.permalink + '\t' + trimTitle(img.title)
+        else:
+          imgur_url = imgur_url + '\t'+ existing_images[imgur_url][0] + '\t' + existing_images[imgur_url][1]
+        #save the image for storage, if not already present in final
+        if imgur_url not in final_img_urls:
+          final_img_urls.append(imgur_url)
 
   return final_img_urls
 

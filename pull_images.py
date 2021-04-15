@@ -58,7 +58,7 @@ def getFinalImages(reddit, time_period):
     try:
       img.preview
     except AttributeError:
-        pass
+        print("Cannot find needed attributes for this entry")
     else:
       curr_img_width = img.preview['images'][0]['source']['width']
       curr_img_height = img.preview['images'][0]['source']['height']
@@ -94,7 +94,8 @@ def getExistingImages():
     #split line
     image = line.split('\t')
     #print("image", image)
-    existing_images[image[0]] = [image[1], image[2]]
+    if image and (len(image) > 2):
+      existing_images[image[0]] = [image[1], image[2]]
   return existing_images
 
 def getBannedImages():
@@ -125,4 +126,7 @@ def trimTitle(title):
     #print (rebuilt)
   #join the string again
   new_title = " ".join(rebuilt)
-  return new_title
+  if len(new_title) > 0:
+    return new_title
+  else: 
+    return "Untitled"

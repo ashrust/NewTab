@@ -28,6 +28,7 @@ def autocomplete_ddg():
 @app.route('/')
 def newtab():
   image = render_img.get_image(img_urls_path)
+  #print("img",image)
   return render_template("final.html", imgurl = image[0], imgreddit = image[1], imgtext = image[2])
   
 #info page

@@ -14,7 +14,11 @@ def get_image(filepath):
     final_img_url = random.choice(lines)
     # return list "IMGURL", "IMGREDDITLINK", "IMGTXT"
     splits = final_img_url.split('\t')
-    return splits
+    if len(splits) > 2:
+      return splits
+    else:
+      print("bad image", splits)
+      return default_image
   else:
     #if no new images available, return default img
     return default_image
